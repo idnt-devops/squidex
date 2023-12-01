@@ -57,9 +57,8 @@ RUN npm install --loglevel=error --force
 
 COPY frontend .
 
-# Build Frontend
-RUN npm run test:coverage \
- && npm run build
+# Build Frontend but skip test coverage (Headless chromium does not work with DID)
+RUN npm run build
 
 RUN cp -a build /build/
 
